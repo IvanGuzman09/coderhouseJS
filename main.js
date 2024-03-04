@@ -1,3 +1,10 @@
+
+let nombre;
+do {
+nombre = prompt("Por favor, ingrese su nombre:");
+} while (!nombre || nombre.trim() === '');
+alert("Hola, " + nombre + "! Bienvenido a nuestra página web.");
+
 const input = document.querySelector("input");
 const addBtn = document.querySelector(".btn-add");
 const ul = document.querySelector("ul");
@@ -21,23 +28,53 @@ addBtn.addEventListener("click", (e) => {
     empty.style.display = "none";
   }
 });
+let reseñas = JSON.parse(localStorage.getItem('reseñas')) || [];
 
-function addDeleteBtn() {
-  const deleteBtn = document.createElement("button");
+// Función para agregar una reseña y actualizar el almacenamiento local
+function agregarReseña() {
+  let nombre = prompt("Por favor, ingrese su nombre:");
+  let comentario = prompt("Ingrese su reseña:");
 
-  deleteBtn.textContent = "X";
-  deleteBtn.className = "btn-delete";
+  // Verificar si el nombre y el comentario no están vacíos
+  if (nombre.trim() !== '' && comentario.trim() !== '') {
+    // Crear un objeto reseña
+    let nuevaReseña = {
+      nombre: nombre,
+      comentario: comentario
+    };
 
-  deleteBtn.addEventListener("click", (e) => {
-    const item = e.target.parentElement;
-    ul.removeChild(item);
+    // Agregar la reseña al array
+    reseñas.push(nuevaReseña);
 
-    const items = document.querySelectorAll("li");
+    // Actualizar el almacenamiento local
+    localStorage.setItem('reseñas', JSON.stringify(reseñas));
 
-    if (items.length === 0) {
-      empty.style.display = "block";
-    }
+    // Mostrar todas las reseñas
+    mostrarReseñas();
+  } else {
+    alert("Debe ingresar un nombre y un comentario válidos.");
+  }
+}
+
+// Función para mostrar todas las reseñas en la página
+function mostrarReseñas() {
+
+  // Limpiar el contenido actual
+  document.body.innerHTML = '';
+
+  // Crear elementos para cada reseña y agregarlos al cuerpo del documento
+  reseñas.forEach((res) => {
+    let elementoReseña = document.createElement('div');
+    elementoReseña.innerHTML = `<strong>${res.nombre}:</strong> ${res.comentario}`;
+    document.body.appendChild(elementoReseña);
   });
 
-  return deleteBtn;
+  // Agregar el botón para agregar reseñas
+  let botonAgregar = document.createElement('button');
+  botonAgregar.textContent = 'Agregar Reseña';
+  botonAgregar.onclick = agregarReseña;
+  document.body.appendChild(botonAgregar);
 }
+
+// Inicializar la página mostrando las reseñas almacenadas
+mostrarReseñas();
