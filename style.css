@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  background-image: url('RayasBarber.jpg');
+  background-size: cover;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  text-align: center;
+}
+
+div {
+  background-color: #000000;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+button {
+  background-color: #000000;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #000000;
+}
