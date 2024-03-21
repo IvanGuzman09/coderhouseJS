@@ -76,5 +76,5 @@ function mostrarReseñas() {
   document.body.appendChild(botonAgregar);
 }
 
-// Inicializar la página mostrando las reseñas almacenadas
+
 mostrarReseñas();
