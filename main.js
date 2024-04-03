@@ -60,7 +60,6 @@ function agregarReseña() {
 function mostrarReseñas() {
 
   // Limpiar el contenido actual
-  document.body.innerHTML = '';
 
   // Crear elementos para cada reseña y agregarlos al cuerpo del documento
   reseñas.forEach((res) => {

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const postList = document.getElementById('post-list');
   
     // Realizar una solicitud GET a la API
-    fetch('https://jsonplaceholder.typicode.com/posts/1')
+    fetch('https://jsonplaceholder.typicode.com/posts')
         .then(response => {
             // Verificar si la solicitud fue exitosa
             if (!response.ok) {
